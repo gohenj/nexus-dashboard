@@ -13,7 +13,6 @@ export default function Layout() {
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       
-      {/* Sidebar - Desktop */}
       <aside className="hidden md:flex flex-col w-64 bg-white border-r border-gray-200">
         <div className="p-6 flex items-center gap-3">
           <div className="bg-blue-600 p-2 rounded-lg">
@@ -49,12 +48,11 @@ export default function Layout() {
         </div>
       </aside>
 
-      {/* Área Principal onde as telas vão aparecer */}
+
       <main className="flex-1 overflow-y-auto pb-20 md:pb-0">
         <Outlet />
       </main>
 
-      {/* Bottom Navigation - Mobile */}
       <nav className="md:hidden fixed bottom-0 w-full bg-white border-t border-gray-200 flex justify-around items-center p-2 z-50">
         {menuItems.map((item) => (
           <NavLink

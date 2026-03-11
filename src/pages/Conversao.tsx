@@ -39,7 +39,6 @@ export default function Conversao() {
     setLoading(true);
 
     try {
-      // Faz o fetch real na API do CoinGecko buscando tudo em BRL
       const response = await fetch(
         'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=brl'
       );
@@ -50,9 +49,8 @@ export default function Conversao() {
 
       const data = await response.json();
 
-      // Mapeia os preços em BRL
       const pricesInBrl: Record<Asset, number> = {
-        BRL: 1, // 1 Real é igual a 1 Real
+        BRL: 1, 
         BTC: data.bitcoin.brl,
         ETH: data.ethereum.brl,
         USDT: data.tether.brl,
@@ -65,11 +63,9 @@ export default function Conversao() {
         throw new Error('Cotação não encontrada para o ativo selecionado.');
       }
 
-      // Matemática da conversão: Transforma para BRL, depois divide pela cotação do destino
       const valueInBrl = numericAmount * fromPriceInBrl;
       const convertedAmount = valueInBrl / toPriceInBrl;
-      
-      // Taxa de câmbio direta entre os dois ativos
+
       const exchangeRate = fromPriceInBrl / toPriceInBrl;
 
       setResult({
@@ -102,7 +98,7 @@ export default function Conversao() {
         <form onSubmit={handleConvert} className="space-y-6">
           
           <div className="flex flex-col md:flex-row items-center gap-4">
-            {/* Moeda de Origem */}
+
             <div className="w-full">
               <label className="block text-sm font-medium text-gray-700 mb-1">De (Origem)</label>
               <select
@@ -118,7 +114,6 @@ export default function Conversao() {
               <ArrowRight className="w-6 h-6 text-gray-400" />
             </div>
 
-            {/* Moeda de Destino */}
             <div className="w-full">
               <label className="block text-sm font-medium text-gray-700 mb-1">Para (Destino)</label>
               <select

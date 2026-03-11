@@ -2,7 +2,7 @@ import { initialUsers, initialTransactions } from '../mocks/data';
 import { TrendingUp, TrendingDown, Users, DollarSign, Wallet } from 'lucide-react';
 
 export default function Home() {
-  // 1. Cálculos dos Indicadores (Cards)
+
   const activeUsers = initialUsers.filter(u => u.status === 'ACTIVE').length;
 
   const totalDepositedBRL = initialTransactions
@@ -15,7 +15,7 @@ export default function Home() {
 
   const volumeBRL = totalDepositedBRL + totalWithdrawnBRL;
 
-  // 2. Cálculo dos Saldos Totais da Plataforma
+
   const totalBalances = initialUsers.reduce(
     (acc, user) => {
       acc.BRL += user.balances.BRL;
@@ -27,10 +27,9 @@ export default function Home() {
     { BRL: 0, BTC: 0, ETH: 0, USDT: 0 }
   );
 
-  // 3. Pegando apenas as 5 últimas movimentações
   const recentTransactions = initialTransactions.slice(0, 5);
 
-  // Funções de formatação para deixar os números bonitos
+
   const formatBRL = (value: number) => 
     new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
   
@@ -41,7 +40,6 @@ export default function Home() {
     <div className="p-6 max-w-7xl mx-auto space-y-6">
       <h1 className="text-2xl font-bold text-gray-800">Resumo da Plataforma</h1>
 
-      {/* Grid de Cards de Indicadores */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center gap-4">
           <div className="bg-green-100 p-3 rounded-lg"><TrendingUp className="w-6 h-6 text-green-600" /></div>
@@ -77,7 +75,7 @@ export default function Home() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Bloco de Saldos por Ativo */}
+
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 lg:col-span-1">
           <h2 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
             <Wallet className="w-5 h-5 text-gray-500" /> Saldos Custodiados
@@ -102,7 +100,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Lista de Últimas Movimentações */}
+
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 lg:col-span-2">
           <h2 className="text-lg font-bold text-gray-800 mb-4">Últimas Movimentações</h2>
           <div className="overflow-x-auto">

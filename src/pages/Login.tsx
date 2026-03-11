@@ -7,14 +7,14 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   
-  // Hook do react-router-dom para fazer a navegação
+
   const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
-    // Validação simples
+
     if (!email || !password) {
       setError('Por favor, preencha todos os campos.');
       return;
@@ -25,7 +25,7 @@ export default function Login() {
       return;
     }
 
-    // Como não tem autenticação real, se passar na validação já vai pra Home
+
     navigate('/home');
   };
 
@@ -33,7 +33,7 @@ export default function Login() {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-4">
       <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
         
-        {/* Logo / Header */}
+
         <div className="flex flex-col items-center mb-8">
           <div className="bg-blue-600 p-3 rounded-full mb-4">
             <Wallet className="w-8 h-8 text-white" />
@@ -42,7 +42,7 @@ export default function Login() {
           <p className="text-gray-500 text-sm mt-1">Acesse seu painel de controle</p>
         </div>
 
-        {/* Formulário */}
+
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -70,7 +70,6 @@ export default function Login() {
             />
           </div>
 
-          {/* Mensagem de Erro */}
           {error && (
             <p className="text-red-500 text-sm text-center font-medium">{error}</p>
           )}

@@ -1,4 +1,4 @@
-// Tipagens obrigatórias do projeto [cite: 22, 23]
+
 export type UserStatus = 'ACTIVE' | 'PENDING' | 'BLOCKED';
 export type TransactionType = 'DEPOSIT' | 'WITHDRAW';
 export type Asset = 'BRL' | 'BTC' | 'ETH' | 'USDT';
@@ -23,7 +23,7 @@ export interface Transaction {
   note?: string;
 }
 
-// Lista de 10 Usuários 
+
 export const initialUsers: User[] = [
   { id: '1', name: 'Ana Silva', email: 'ana@email.com', status: 'ACTIVE', createdAt: '2024-01-10T10:00:00Z', lastActivity: '2024-03-10T14:30:00Z', balances: { BRL: 15000, BTC: 0.5, ETH: 2.1, USDT: 1000 } },
   { id: '2', name: 'Bruno Costa', email: 'bruno@email.com', status: 'PENDING', createdAt: '2024-02-15T09:00:00Z', lastActivity: '2024-02-15T09:00:00Z', balances: { BRL: 0, BTC: 0, ETH: 0, USDT: 0 } },
@@ -37,7 +37,7 @@ export const initialUsers: User[] = [
   { id: '10', name: 'Juliana Paes', email: 'juliana@email.com', status: 'ACTIVE', createdAt: '2024-02-20T12:00:00Z', lastActivity: '2024-03-10T10:20:00Z', balances: { BRL: 7600, BTC: 0.2, ETH: 0.8, USDT: 800 } },
 ];
 
-// Gerador simples para criar 30 movimentações iniciais (DEPOSIT e WITHDRAW) [cite: 22, 23]
+
 const generateTransactions = (): Transaction[] => {
   const transactions: Transaction[] = [];
   const assets: Asset[] = ['BRL', 'BTC', 'ETH', 'USDT'];
@@ -62,7 +62,6 @@ const generateTransactions = (): Transaction[] => {
     });
   }
   
-  // Ordena da mais recente para a mais antiga
   return transactions.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
